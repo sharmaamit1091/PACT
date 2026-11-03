@@ -20,17 +20,17 @@ export const VisualRadialProgressStepper: React.FC<VisualRadialProgressStepperPr
   const strokeDashoffset = circumference - (currentPercentage / 100) * circumference;
 
   const getStatusLabel = (pct: number) => {
-    if (pct === 100) return { label: 'Delivered (100%)', color: 'text-emerald-400', badge: 'Complete' };
-    if (pct >= 80) return { label: 'Final Verification', color: 'text-emerald-300', badge: 'Sprint End' };
-    if (pct >= 50) return { label: 'Active Execution', color: 'text-sky-400', badge: 'Halfway' };
-    if (pct >= 20) return { label: 'Early Progress', color: 'text-amber-400', badge: 'In Motion' };
-    return { label: 'Kickoff Stage', color: 'text-slate-400', badge: 'Ready' };
+    if (pct === 100) return { label: 'Delivered (100%)', color: 'text-emerald-700', badge: 'Complete', bg: 'bg-emerald-50 text-emerald-800 border-emerald-200' };
+    if (pct >= 80) return { label: 'Final Verification', color: 'text-emerald-600', badge: 'Sprint End', bg: 'bg-emerald-50 text-emerald-800 border-emerald-200' };
+    if (pct >= 50) return { label: 'Active Execution', color: 'text-sky-700', badge: 'Halfway', bg: 'bg-sky-50 text-sky-800 border-sky-200' };
+    if (pct >= 20) return { label: 'Early Progress', color: 'text-amber-700', badge: 'In Motion', bg: 'bg-amber-50 text-amber-800 border-amber-200' };
+    return { label: 'Kickoff Stage', color: 'text-slate-600', badge: 'Ready', bg: 'bg-slate-100 text-slate-700 border-slate-200' };
   };
 
   const status = getStatusLabel(currentPercentage);
 
   return (
-    <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 shadow-sm space-y-4">
+    <div className="bg-white border border-slate-200/90 rounded-2xl p-4 shadow-sm space-y-4">
       {/* Top Header: Visual Radial Meter & Status */}
       <div className="flex items-center justify-between gap-4">
         <div className="flex items-center gap-4">
@@ -41,7 +41,7 @@ export const VisualRadialProgressStepper: React.FC<VisualRadialProgressStepperPr
                 cx="42"
                 cy="42"
                 r={radius}
-                className="text-slate-800 stroke-current"
+                className="text-slate-100 stroke-current"
                 strokeWidth="7"
                 fill="transparent"
               />
@@ -51,10 +51,10 @@ export const VisualRadialProgressStepper: React.FC<VisualRadialProgressStepperPr
                 r={radius}
                 className={`stroke-current transition-all duration-500 ease-out ${
                   currentPercentage === 100
-                    ? 'text-emerald-400'
+                    ? 'text-emerald-500'
                     : currentPercentage >= 50
-                    ? 'text-sky-400'
-                    : 'text-amber-400'
+                    ? 'text-sky-500'
+                    : 'text-amber-500'
                 }`}
                 strokeWidth="7"
                 strokeDasharray={circumference}
@@ -64,7 +64,7 @@ export const VisualRadialProgressStepper: React.FC<VisualRadialProgressStepperPr
               />
             </svg>
             <div className="absolute inset-0 flex flex-col items-center justify-center">
-              <span className="text-base font-black text-white leading-none">
+              <span className="text-base font-black text-slate-900 leading-none">
                 {currentPercentage}%
               </span>
             </div>
@@ -75,11 +75,11 @@ export const VisualRadialProgressStepper: React.FC<VisualRadialProgressStepperPr
               <span className={`text-sm font-extrabold ${status.color}`}>
                 {status.label}
               </span>
-              <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-800 text-slate-300 border border-slate-700">
+              <span className={`px-2 py-0.5 rounded text-[10px] font-bold border ${status.bg}`}>
                 {status.badge}
               </span>
             </div>
-            <p className="text-xs text-slate-400 mt-0.5">
+            <p className="text-xs text-slate-500 mt-0.5 font-medium">
               Authorized self-reported delivery progress in 10% increments
             </p>
           </div>
@@ -88,14 +88,14 @@ export const VisualRadialProgressStepper: React.FC<VisualRadialProgressStepperPr
         {/* Milestone Indicator */}
         <div className="hidden sm:flex items-center gap-1 text-xs">
           {currentPercentage === 100 ? (
-            <div className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-bold">
-              <Trophy className="w-4 h-4 text-emerald-400" />
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200 font-bold">
+              <Trophy className="w-4 h-4 text-emerald-600" />
               <span>Deliverable Ready!</span>
             </div>
           ) : (
-            <div className="flex items-center gap-1 text-slate-400 text-xs">
+            <div className="flex items-center gap-1 text-slate-500 text-xs font-medium">
               <span>Next goal:</span>
-              <strong className="text-sky-400 font-bold">
+              <strong className="text-emerald-700 font-bold">
                 {Math.min(100, currentPercentage + 10)}%
               </strong>
             </div>
@@ -119,25 +119,25 @@ export const VisualRadialProgressStepper: React.FC<VisualRadialProgressStepperPr
                 className={`py-2 px-1 text-xs font-black rounded-xl transition-all flex flex-col items-center justify-center gap-0.5 ${
                   disabled
                     ? isSelected
-                      ? 'bg-slate-700 text-slate-300 cursor-not-allowed opacity-80'
-                      : 'bg-slate-900/60 text-slate-600 border border-slate-800 cursor-not-allowed'
+                      ? 'bg-slate-200 text-slate-600 cursor-not-allowed'
+                      : 'bg-slate-50 text-slate-300 border border-slate-200 cursor-not-allowed'
                     : isSelected
                     ? step === 100
-                      ? 'bg-emerald-500 text-slate-950 shadow-lg shadow-emerald-500/30 ring-2 ring-emerald-300 scale-105 cursor-pointer'
-                      : 'bg-sky-500 text-slate-950 shadow-lg shadow-sky-500/30 ring-2 ring-sky-300 scale-105 cursor-pointer'
+                      ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/30 ring-2 ring-emerald-400 scale-105 cursor-pointer'
+                      : 'bg-teal-600 text-white shadow-md shadow-teal-600/30 ring-2 ring-teal-400 scale-105 cursor-pointer'
                     : isPast
-                    ? 'bg-slate-800/90 hover:bg-slate-700 text-slate-200 border border-slate-700 cursor-pointer'
-                    : 'bg-slate-900/80 hover:bg-slate-800 text-slate-400 border border-slate-800 cursor-pointer'
+                    ? 'bg-emerald-50/70 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 cursor-pointer font-bold'
+                    : 'bg-slate-50 hover:bg-slate-100 text-slate-600 border border-slate-200 cursor-pointer'
                 }`}
               >
                 <span>{step}%</span>
                 <span
                   className={`w-1.5 h-1.5 rounded-full ${
                     isSelected
-                      ? 'bg-slate-950'
+                      ? 'bg-white'
                       : isPast
-                      ? 'bg-emerald-400'
-                      : 'bg-slate-700'
+                      ? 'bg-emerald-600'
+                      : 'bg-slate-300'
                   }`}
                 />
               </button>
@@ -157,10 +157,10 @@ export const VisualRadialProgressStepper: React.FC<VisualRadialProgressStepperPr
                 key={i}
                 className={`h-1.5 rounded-full transition-all duration-300 ${
                   isCurrent
-                    ? 'bg-sky-400 shadow-sm shadow-sky-400'
+                    ? 'bg-emerald-600 shadow-xs'
                     : isFilled
-                    ? 'bg-emerald-500/80'
-                    : 'bg-slate-800'
+                    ? 'bg-emerald-500'
+                    : 'bg-slate-200'
                 }`}
               />
             );

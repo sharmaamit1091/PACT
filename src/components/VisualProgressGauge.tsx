@@ -27,15 +27,15 @@ export const VisualProgressGauge: React.FC<VisualProgressGaugeProps> = ({
   const strokeDashoffset = circumference - (percentCompleted / 100) * circumference;
 
   return (
-    <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 shadow-sm flex flex-col justify-between">
+    <div className="bg-white border border-slate-200/90 rounded-2xl p-4 shadow-sm flex flex-col justify-between">
       <div className="flex items-center justify-between mb-2">
         <div className="flex items-center gap-1.5">
-          <TrendingUp className="w-4 h-4 text-emerald-400" />
-          <span className="text-xs font-bold uppercase tracking-wider text-slate-300">
+          <TrendingUp className="w-4 h-4 text-emerald-600" />
+          <span className="text-xs font-bold uppercase tracking-wider text-slate-700">
             Team Health & Velocity
           </span>
         </div>
-        <span className="text-[11px] font-semibold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">
+        <span className="text-[11px] font-bold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
           {percentCompleted >= 70 ? 'On Track' : percentCompleted >= 40 ? 'Active Pace' : 'In Ramp-up'}
         </span>
       </div>
@@ -49,16 +49,16 @@ export const VisualProgressGauge: React.FC<VisualProgressGaugeProps> = ({
               cx="50"
               cy="50"
               r={radius}
-              className="text-slate-800 stroke-current"
+              className="text-slate-100 stroke-current"
               strokeWidth="10"
               fill="transparent"
             />
-            {/* In Progress Arc (Amber/Sky) */}
+            {/* In Progress Arc (Sky) */}
             <circle
               cx="50"
               cy="50"
               r={radius}
-              className="text-sky-500/40 stroke-current transition-all duration-700 ease-out"
+              className="text-sky-300 stroke-current transition-all duration-700 ease-out"
               strokeWidth="10"
               strokeDasharray={circumference}
               strokeDashoffset={circumference - ((percentCompleted + percentInProgress) / 100) * circumference}
@@ -69,7 +69,7 @@ export const VisualProgressGauge: React.FC<VisualProgressGaugeProps> = ({
               cx="50"
               cy="50"
               r={radius}
-              className="text-emerald-400 stroke-current transition-all duration-700 ease-out"
+              className="text-emerald-500 stroke-current transition-all duration-700 ease-out"
               strokeWidth="10"
               strokeDasharray={circumference}
               strokeDashoffset={strokeDashoffset}
@@ -78,8 +78,8 @@ export const VisualProgressGauge: React.FC<VisualProgressGaugeProps> = ({
             />
           </svg>
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <span className="text-xl font-extrabold text-white leading-none">{percentCompleted}%</span>
-            <span className="text-[10px] text-slate-400 uppercase tracking-wider mt-0.5 font-medium">Done</span>
+            <span className="text-xl font-extrabold text-slate-900 leading-none">{percentCompleted}%</span>
+            <span className="text-[10px] text-slate-500 uppercase tracking-wider mt-0.5 font-bold">Done</span>
           </div>
         </div>
 
@@ -88,15 +88,15 @@ export const VisualProgressGauge: React.FC<VisualProgressGaugeProps> = ({
           {/* Completed */}
           <div>
             <div className="flex items-center justify-between text-xs mb-1">
-              <span className="flex items-center gap-1.5 text-slate-300 font-medium">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 inline-block shadow-sm shadow-emerald-400/50" />
+              <span className="flex items-center gap-1.5 text-slate-700 font-semibold">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block shadow-sm shadow-emerald-500/30" />
                 Done
               </span>
-              <span className="font-bold text-emerald-400">{completed} <span className="text-slate-500 font-normal">({percentCompleted}%)</span></span>
+              <span className="font-extrabold text-emerald-700">{completed} <span className="text-slate-400 font-normal">({percentCompleted}%)</span></span>
             </div>
-            <div className="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
+            <div className="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
               <div
-                className="bg-emerald-400 h-full rounded-full transition-all duration-500"
+                className="bg-emerald-500 h-full rounded-full transition-all duration-500"
                 style={{ width: `${percentCompleted}%` }}
               />
             </div>
@@ -105,15 +105,15 @@ export const VisualProgressGauge: React.FC<VisualProgressGaugeProps> = ({
           {/* In Progress */}
           <div>
             <div className="flex items-center justify-between text-xs mb-1">
-              <span className="flex items-center gap-1.5 text-slate-300 font-medium">
-                <span className="w-2.5 h-2.5 rounded-full bg-sky-400 inline-block shadow-sm shadow-sky-400/50" />
+              <span className="flex items-center gap-1.5 text-slate-700 font-semibold">
+                <span className="w-2.5 h-2.5 rounded-full bg-sky-500 inline-block shadow-sm shadow-sky-500/30" />
                 In Progress
               </span>
-              <span className="font-bold text-sky-300">{inProgress} <span className="text-slate-500 font-normal">({percentInProgress}%)</span></span>
+              <span className="font-extrabold text-sky-700">{inProgress} <span className="text-slate-400 font-normal">({percentInProgress}%)</span></span>
             </div>
-            <div className="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
+            <div className="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
               <div
-                className="bg-sky-400 h-full rounded-full transition-all duration-500"
+                className="bg-sky-500 h-full rounded-full transition-all duration-500"
                 style={{ width: `${percentInProgress}%` }}
               />
             </div>
@@ -122,13 +122,13 @@ export const VisualProgressGauge: React.FC<VisualProgressGaugeProps> = ({
           {/* Overdue / Urgent */}
           <div>
             <div className="flex items-center justify-between text-xs mb-1">
-              <span className="flex items-center gap-1.5 text-slate-300 font-medium">
-                <span className="w-2.5 h-2.5 rounded-full bg-rose-400 inline-block shadow-sm shadow-rose-400/50" />
+              <span className="flex items-center gap-1.5 text-slate-700 font-semibold">
+                <span className="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block shadow-sm shadow-rose-500/30" />
                 Overdue / Urgent
               </span>
-              <span className="font-bold text-rose-400">{overdue} <span className="text-slate-500 font-normal">({percentOverdue}%)</span></span>
+              <span className="font-extrabold text-rose-700">{overdue} <span className="text-slate-400 font-normal">({percentOverdue}%)</span></span>
             </div>
-            <div className="w-full bg-slate-800 rounded-full h-1.5 overflow-hidden">
+            <div className="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
               <div
                 className="bg-rose-500 h-full rounded-full transition-all duration-500"
                 style={{ width: `${percentOverdue}%` }}
