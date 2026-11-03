@@ -1,0 +1,6 @@
+{
+  "name": "Webex Studio - Enterprise Collaboration & Integration Hub",
+  "description": "Comprehensive Cisco Webex integration platform supporting Spaces messaging, Meetings management, Adaptive Cards designer, Webhook streams, and OAuth/Bot APIs.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

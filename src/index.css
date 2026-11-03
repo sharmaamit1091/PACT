@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+@layer base {
+  * {
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--color-bg-app);
+    color: var(--color-text-main);
+  }
+  .font-mono {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* ==========================================================================
+   SOOTHING THEME SYSTEM: Zero harsh navy blue. Organic, calm & attractive.
+   ========================================================================== */
+
+:root,
+body[data-theme="soothing-sage"],
+[data-theme="soothing-sage"] {
+  --color-bg-app: #F7FAF7;
+  --color-bg-header: #FFFFFF;
+  --color-bg-sidebar: #F4F7F4;
+  --color-bg-card: #FFFFFF;
+  --color-bg-card-subtle: #EEF3EE;
+  --color-bg-card-hover: #F8FAF8;
+  --color-bg-input: #FFFFFF;
+  --color-bg-inset: #EFF3EF;
+  --color-border: #DEE5DE;
+  --color-border-subtle: #E8ECE6;
+  --color-border-hover: #CCD5CB;
+  --color-text-main: #131E18;
+  --color-text-secondary: #3D4E45;
+  --color-text-muted: #62756B;
+  --color-text-faint: #8E9F96;
+  --color-accent-primary: #0F766E;
+  --color-accent-hover: #0D9488;
+  --color-accent-subtle: #E6F3F0;
+  --color-accent-text: #0D6F67;
+  --color-card-shadow: 0 2px 10px -2px rgba(19, 30, 24, 0.05), 0 1px 3px rgba(19, 30, 24, 0.03);
+}
+
+body[data-theme="evening-stone"],
+[data-theme="evening-stone"] {
+  --color-bg-app: #131615;
+  --color-bg-header: #1A1E1C;
+  --color-bg-sidebar: #161A18;
+  --color-bg-card: #1D221F;
+  --color-bg-card-subtle: #242B27;
+  --color-bg-card-hover: #222825;
+  --color-bg-input: #171B19;
+  --color-bg-inset: #121514;
+  --color-border: #2C3530;
+  --color-border-subtle: #232B26;
+  --color-border-hover: #3B4640;
+  --color-text-main: #F1F6F2;
+  --color-text-secondary: #A6B7AE;
+  --color-text-muted: #76897E;
+  --color-text-faint: #53625A;
+  --color-accent-primary: #10B981;
+  --color-accent-hover: #34D399;
+  --color-accent-subtle: #064E3B;
+  --color-accent-text: #34D399;
+  --color-card-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.45);
+}
+
+body[data-theme="matcha-oat"],
+[data-theme="matcha-oat"] {
+  --color-bg-app: #F5F3EC;
+  --color-bg-header: #ECE7DD;
+  --color-bg-sidebar: #E7E2D6;
+  --color-bg-card: #FDFBF7;
+  --color-bg-card-subtle: #EFE9DD;
+  --color-bg-card-hover: #F8F4EA;
+  --color-bg-input: #FDFBF7;
+  --color-bg-inset: #E6E1D4;
+  --color-border: #DCD5C4;
+  --color-border-subtle: #E4DECF;
+  --color-border-hover: #CCC4AF;
+  --color-text-main: #242620;
+  --color-text-secondary: #4E5346;
+  --color-text-muted: #78806F;
+  --color-text-faint: #9CA294;
+  --color-accent-primary: #3F6212;
+  --color-accent-hover: #4D7C0F;
+  --color-accent-subtle: #ECFCCB;
+  --color-accent-text: #365314;
+  --color-card-shadow: 0 2px 10px -2px rgba(36, 38, 32, 0.06), 0 1px 3px rgba(36, 38, 32, 0.03);
+}
+
+/* Semantic utility helpers */
+.theme-bg-app {
+  background-color: var(--color-bg-app);
+}
+.theme-bg-header {
+  background-color: var(--color-bg-header);
+}
+.theme-bg-sidebar {
+  background-color: var(--color-bg-sidebar);
+}
+.theme-bg-card {
+  background-color: var(--color-bg-card);
+}
+.theme-bg-card-subtle {
+  background-color: var(--color-bg-card-subtle);
+}
+.theme-bg-card-hover:hover {
+  background-color: var(--color-bg-card-hover);
+}
+.theme-bg-input {
+  background-color: var(--color-bg-input);
+}
+.theme-bg-inset {
+  background-color: var(--color-bg-inset);
+}
+.theme-border {
+  border-color: var(--color-border);
+}
+.theme-border-subtle {
+  border-color: var(--color-border-subtle);
+}
+.theme-border-hover:hover {
+  border-color: var(--color-border-hover);
+}
+.theme-text-main {
+  color: var(--color-text-main);
+}
+.theme-text-secondary {
+  color: var(--color-text-secondary);
+}
+.theme-text-muted {
+  color: var(--color-text-muted);
+}
+.theme-text-faint {
+  color: var(--color-text-faint);
+}
+.theme-accent {
+  background-color: var(--color-accent-primary);
+  color: #FFFFFF;
+}
+.theme-card {
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--color-card-shadow);
+}
+
+/* Refined soothing scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-border-hover);
+}
